@@ -4,7 +4,8 @@
 const LOG_PREFIX = '[Twitter Media DL]';
 const EXTENSION_KEY = 'x-multi-video-dl';
 
-const DOWNLOAD_SVG = '<g><path d="M 21 15 L 20.98 18.51 C 20.98 19.89 19.86 21 18.48 21 L 5.5 21 C 4.11 21 3 19.88 3 18.5 L 3 15 L 5 15 L 5 18.5 C 5 18.78 5.22 19 5.5 19 L 18.48 19 C 18.76 19 18.98 18.78 18.98 18.5 L 19 15 L 21 15 Z M 12 16 L 17.7 10.3 L 16.29 8.88 L 13 12.18 L 13 2.59 L 11 2.59 L 11 12.18 L 7.7 8.88 L 6.29 10.3 L 12 16 Z"/></g>';
+const DOWNLOAD_ICON_PATH = 'M 21 15 L 20.98 18.51 C 20.98 19.89 19.86 21 18.48 21 L 5.5 21 C 4.11 21 3 19.88 3 18.5 L 3 15 L 5 15 L 5 18.5 C 5 18.78 5.22 19 5.5 19 L 18.48 19 C 18.76 19 18.98 18.78 18.98 18.5 L 19 15 L 21 15 Z M 12 16 L 17.7 10.3 L 16.29 8.88 L 13 12.18 L 13 2.59 L 11 2.59 L 11 12.18 L 7.7 8.88 L 6.29 10.3 L 12 16 Z';
+const SVG_NS = 'http://www.w3.org/2000/svg';
 
 // --- Utility ---
 
@@ -133,7 +134,12 @@ function createDownloadButton(templateBtn, onClick) {
 
   const svg = dlBtn.querySelector('svg');
   if (svg) {
-    svg.innerHTML = DOWNLOAD_SVG;
+    while (svg.firstChild) svg.firstChild.remove();
+    const g = document.createElementNS(SVG_NS, 'g');
+    const path = document.createElementNS(SVG_NS, 'path');
+    path.setAttribute('d', DOWNLOAD_ICON_PATH);
+    g.appendChild(path);
+    svg.appendChild(g);
     svg.setAttribute('viewBox', '0 0 24 24');
   }
 
