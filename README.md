@@ -77,8 +77,10 @@ twitter-media-downloader/
 
 ## Requirements
 
-- Firefox Developer Edition / Firefox ESR
+- Firefox（通常版で動作します）
 - Manifest V2 対応（`webRequest.filterResponseData` を使用）
+
+> **Note:** 署名なしの拡張機能を恒久インストールする場合は Firefox Developer Edition または ESR が必要です（`xpinstall.signatures.required` の変更が必要）。一時的なアドオンとしての読み込みは通常版でも可能です。
 
 ## License
 
