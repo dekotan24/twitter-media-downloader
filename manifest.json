@@ -1,0 +1,46 @@
+{
+  "manifest_version": 2,
+  "name": "Twitter Media Downloader",
+  "description": "Twitter/Xの画像・動画をワンクリックでダウンロードします。",
+  "version": "1.0",
+  "author": "Ogura Deko",
+  "homepage_url": "https://fanet.work",
+  "permissions": [
+    "*://x.com/*",
+    "*://*.x.com/*",
+    "*://twitter.com/*",
+    "*://*.twitter.com/*",
+    "*://*.twimg.com/*",
+    "*://video.twimg.com/*",
+    "storage",
+    "downloads",
+    "tabs",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://x.com/*",
+        "*://*.x.com/*",
+        "*://twitter.com/*",
+        "*://mobile.twitter.com/*"
+      ],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "scripts": ["jszip.min.js", "background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "twitter-dl@fanet.work"
+    }
+  }
+}
